@@ -13,11 +13,19 @@ export class AddTweetComponent implements OnInit {
 
   postTweet(tweet) {
     this.homeService.postTweet(tweet).subscribe(data =>{
+
+      if(data.errors && data.errors.length) {
+        this._snackBar.open(data.errors[0].message,'', {
+          duration: 2000,
+          panelClass: ['mat-toolbar', 'mat-warn']
+        }); 
+      } else {
       this._snackBar.open('Tweet Added','', {
         duration: 2000,
         panelClass: ['mat-toolbar', 'mat-accent']
       });
       this.homeService.tweetAdded.next(true);
+    }
     }, error => {
       console.log(error);
     })
