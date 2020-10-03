@@ -26,17 +26,14 @@ public tweets = [];
       width: '600px',
 
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.getTweets();
-    });
-
   }
 
   deleteTweet(id) {
     this.homeService.deleteTweet(id).subscribe(data => {
       console.log('deleted')
-      this._snackBar.open('Tweet Deleted', {
-        duration: 2000
+      this._snackBar.open('Tweet Deleted','', {
+        duration: 2000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       });
       this.getTweets();
     }, error => {
@@ -45,6 +42,11 @@ public tweets = [];
   }
   ngOnInit(): void {
     this.getTweets();
+    this.homeService.tweetAdded.subscribe(data => {
+      if(data) {
+        this.getTweets();
+      }
+    });
   }
 
 

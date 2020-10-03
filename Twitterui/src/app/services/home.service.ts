@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-
+tweetAdded = new Subject();
   constructor(private http: HttpClient) { }
 
   getTweets(): Observable<any> {
