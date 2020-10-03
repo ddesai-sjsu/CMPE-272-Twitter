@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
 
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,10 +134,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 TWITTER_CONFIG = {
-    'CONSUMER_KEY': 'Te6xoNfkMK90eMgpHkSujIJzS',
-    'CONSUMER_SECRET': 'Am4y7RODDBI3dQKMhlIUQI9iWyTVPd4y4KECreLj20lBGcXmvJ',
-    'ACCESS_KEY': '813449480452247553-q9mEtcf2dUx4uxwUuwtEHS4zVRtr0Cx',
-    'ACCESS_SECRET': 'jsYwuOESrlaOP8qOmhOQmu9uSyBVxZoUJvsCxEFgWjpyb',
+    'CONSUMER_KEY': env('CONSUMER_KEY'),
+    'CONSUMER_SECRET': env('CONSUMER_SECRET'),
+    'ACCESS_KEY': env('ACCESS_KEY'),
+    'ACCESS_SECRET': env('ACCESS_SECRET'),
     'END_POINT': 'https://api.twitter.com/1.1'
 }
 

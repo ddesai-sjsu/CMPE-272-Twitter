@@ -7,9 +7,10 @@ from django.http import HttpResponse
 from twitterService import settings
 from django.views.decorators.csrf import csrf_exempt
 
+
 def createAuthObj():
  authObj = OAuth1Session(settings.TWITTER_CONFIG['CONSUMER_KEY'],
-                   client_secret = settings.TWITTER_CONFIG['CONSUMER_SECRET'],
+                   client_secret =settings.TWITTER_CONFIG['CONSUMER_SECRET'],
                    resource_owner_key = settings.TWITTER_CONFIG['ACCESS_KEY'],
                    resource_owner_secret = settings.TWITTER_CONFIG['ACCESS_SECRET'])
  return authObj
