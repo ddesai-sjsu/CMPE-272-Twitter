@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from twitterService import settings
 from django.views.decorators.csrf import csrf_exempt
 
-
+#Author: Ananth Upadhaya
 def createAuthObj():
  authObj = OAuth1Session(settings.TWITTER_CONFIG['CONSUMER_KEY'],
                    client_secret =settings.TWITTER_CONFIG['CONSUMER_SECRET'],
@@ -15,6 +15,7 @@ def createAuthObj():
                    resource_owner_secret = settings.TWITTER_CONFIG['ACCESS_SECRET'])
  return authObj
 
+#Author: Deesha Desai
 def index(request):
     return render(request, 'home.html')
 
@@ -24,6 +25,7 @@ def getTweets(request):
     response = twitter.get(url)
     return HttpResponse(response)
 
+#Author: Preeti Parihar
 @csrf_exempt
 def setTweets(request):
     body_unicode = request.body.decode('utf-8')
@@ -34,6 +36,7 @@ def setTweets(request):
     response = twitter.post(url)
     return HttpResponse(response)
 
+#Author: Priyanka Devendra
 @csrf_exempt
 def deleteTweet(request, id):
     twitter = createAuthObj()
