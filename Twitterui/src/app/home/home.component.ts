@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 public tweets = [];
   constructor(private homeService: HomeService, private dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
-
+// Author: Deesha Desai
   getTweets() {
     this.homeService.getTweets().subscribe(data => {
       this.tweets = data;
@@ -28,6 +28,7 @@ public tweets = [];
     });
   }
 
+  // Author: Priyanka Devendra
   deleteTweet(id) {
     this.homeService.deleteTweet(id).subscribe(data => {
       console.log('deleted')

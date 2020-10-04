@@ -1,4 +1,4 @@
-// Author: Deesha
+
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import {  MatSnackBar } from '@angular/material/snack-bar';
@@ -10,8 +10,8 @@ import {  MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddTweetComponent implements OnInit {
 
-  constructor(private homeService: HomeService, private _snackBar: MatSnackBar) { }
-
+  constructor(public homeService: HomeService, public _snackBar: MatSnackBar) { }
+// Author: Preeti Parihar
   postTweet(tweet) {
     this.homeService.postTweet(tweet).subscribe(data =>{
 

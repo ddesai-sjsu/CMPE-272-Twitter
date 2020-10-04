@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +13,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ],
+      imports: [HttpClientTestingModule, MatDialogModule, MatSnackBarModule, MatToolbarModule ],
+
     })
     .compileComponents();
   });
@@ -19,7 +26,23 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //Author: Preeti Parihar
+  it('should call getTweets onInit', () => {
+    spyOn(component, "getTweets");
+    component.ngOnInit();
+    expect(component.getTweets).toHaveBeenCalled(); 
+  });
+
+  //Author: Priyanka Devendra
+  it('should call postTweet on button clikc', () => {
+    spyOn(component, "postTweet");
+    fixture.debugElement.query(By.css('#post')).triggerEventHandler('click', null);
+    expect(component.postTweet).toHaveBeenCalled(); 
+  });
+
 });
