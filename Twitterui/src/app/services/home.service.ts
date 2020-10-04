@@ -9,6 +9,7 @@ export class HomeService {
 tweetAdded = new Subject();
   constructor(private http: HttpClient) { }
 
+  // Author: Ananth Upadhaya
   getTweets(): Observable<any> {
     return this.http.get<any>('http://127.0.0.1:8000/tweets/getTweets');
   }
